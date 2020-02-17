@@ -1,0 +1,17 @@
+enable
+configure terminal
+hostname RT-3
+banner motd "ACESSO PROIBIDO"
+enable secret class
+service password-encryption
+ip domain-name rede.local
+crypto key generate rsa general-key modulus 1024
+line console 0
+password cisco
+login
+exit
+line vty 0 15
+transport input ssh
+login local
+exec-timeout 5
+do wr
